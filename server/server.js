@@ -29,6 +29,12 @@ app.post('/lions', function(req, res) {
   res.json(lion);
 });
 
+// Added delete - Kevin Lai
+app.delete('/:id', function(req, res){
+    var lion = _.findIndex(lions, {id: req.params.id});
+	lions.splice(lion, 1);
+	res.json(req.lion);			   
+});
 
 app.put('/lions/:id', function(req, res) {
   var update = req.body;
@@ -50,4 +56,3 @@ app.set('port', (process.env.PORT || 8080));
 app.listen(app.get('port'), function() {
  console.log("Node app is running at localhost:" + app.get('port'))
 });
-
